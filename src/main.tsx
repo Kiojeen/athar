@@ -4,11 +4,11 @@ import { ConvexReactClient } from "convex/react";
 import { ThemeProvider } from "next-themes";
 import ReactDOM from "react-dom/client";
 
-import App from "./App.tsx";
+import App from "@/App";
 
-import "./index.css";
+import "@/styles/globals.css"
 
-import { DirectionProvider } from "./components/ui/direction.tsx";
+import { DirectionProvider } from "./components/ui/direction";
 
 const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 

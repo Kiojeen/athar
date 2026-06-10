@@ -2,6 +2,7 @@ import { api } from "@/convex/_generated/api";
 import { useAuthActions } from "@convex-dev/auth/react";
 import { useQuery } from "convex/react";
 import { LogOut, Settings, UserRound } from "lucide-react";
+import { Link } from "react-router-dom";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
@@ -26,9 +27,8 @@ export function SiteHeader() {
     : "؟";
 
   return (
-    <header className="border-border/60 bg-secondary sticky top-0 z-50 w-full border-b backdrop-blur-sm">
+    <header className="border-border/60 bg-secondary sticky top-0 z-50 w-full border-b">
       <div className="mx-auto flex h-20 max-w-7xl items-center justify-between px-4 sm:px-6">
-        {/* Logo + name */}
         <div className="text-primary flex items-center gap-2">
           <div className="shrink-0 rounded-xl p-1.5">
             <img
@@ -42,7 +42,6 @@ export function SiteHeader() {
           </span>
         </div>
 
-        {/* Account */}
         <DropdownMenu>
           <DropdownMenuTrigger
             render={
@@ -70,7 +69,10 @@ export function SiteHeader() {
           </DropdownMenuTrigger>
 
           <DropdownMenuContent align="end" className="w-48">
-            <DropdownMenuItem className="cursor-pointer gap-2">
+            <DropdownMenuItem
+              className="cursor-pointer gap-2"
+              render={<Link to="/profile" />}
+            >
               <UserRound className="h-4 w-4" />
               <span>الملف الشخصي</span>
             </DropdownMenuItem>

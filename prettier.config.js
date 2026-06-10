@@ -9,6 +9,8 @@ export default {
     "^next$",
     "<THIRD_PARTY_MODULES>",
     "",
+    "^@/pages/(.*)$",
+    "",
     "^@/lib/(.*)$",
     "^@/hooks/(.*)$",
     "^@/i18n/(.*)$",

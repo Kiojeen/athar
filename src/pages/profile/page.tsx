@@ -117,7 +117,6 @@ export default function Profile() {
               onChange={(e) => setName(e.target.value)}
               placeholder="أدخل اسمك الكامل"
               className="h-10 text-right"
-              dir="rtl"
             />
           </div>
 
@@ -135,7 +134,6 @@ export default function Profile() {
               onChange={(e) => setPhone(e.target.value)}
               placeholder="07xxxxxxxxx"
               className="h-10 text-right"
-              dir="rtl"
               type="tel"
             />
           </div>
@@ -148,7 +146,6 @@ export default function Profile() {
               value={user?.email ?? ""}
               disabled
               className="bg-muted/40 text-muted-foreground h-10 cursor-not-allowed text-right"
-              dir="rtl"
             />
             <p className="text-muted-foreground text-xs">
               يُدار البريد الإلكتروني عبر حساب Google ولا يمكن تغييره من هنا

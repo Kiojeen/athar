@@ -1,4 +1,3 @@
-// src/lib/orderSchema.ts  — shared Zod schema for the order form
 import * as z from "zod";
 
 export const SCARF_TYPES = ["أمريكي جهتين تطريز", "ملكي تطريز"] as const;

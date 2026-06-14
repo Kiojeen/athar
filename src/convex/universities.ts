@@ -58,7 +58,6 @@ export const getUniversity = query({
   },
 });
 
-// Called after OAuth to link a student to their university
 export const linkUserToUniversity = mutation({
   args: { universityId: v.id("universities") },
   handler: async (ctx, args) => {
@@ -66,15 +65,31 @@ export const linkUserToUniversity = mutation({
     if (!userId) throw new ConvexError("غير مسجل الدخول");
 
     const user = await ctx.db.get(userId);
-    // Admins can't be linked to a university
-    if (user?.isAdmin) return;
-    // Only link once — don't overwrite existing university
-    if (user?.universityId) return;
+    if (!user) throw new ConvexError("المستخدم غير موجود");
 
-    // Verify the university exists
     const uni = await ctx.db.get(args.universityId);
-    if (!uni) throw new ConvexError("البوابة غير موجودة");
+    if (!uni) {
+      throw new ConvexError("البوابة غير موجودة");
+    }
 
-    await ctx.db.patch(userId, { universityId: args.universityId });
+    if (user.isAdmin) {
+      return { status: "admin_blocked" as const };
+    }
+
+    if (user.universityId) {
+      return {
+        status: "already_linked" as const,
+        universityName: uni.name,
+      };
+    }
+
+    await ctx.db.patch(userId, {
+      universityId: args.universityId,
+    });
+
+    return {
+      status: "linked" as const,
+      universityName: uni.name,
+    };
   },
 });

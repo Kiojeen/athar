@@ -1,4 +1,4 @@
-export default {
+const config = {
   plugins: [
     "@ianvs/prettier-plugin-sort-imports",
     "prettier-plugin-tailwindcss",
@@ -26,6 +26,7 @@ export default {
   ],
 
   importOrderParserPlugins: ["typescript", "jsx", "decorators-legacy"],
+  importOrderSortSpecifiers: true,
 
   tailwindFunctions: ["clsx", "cn", "tw", "twMerge", "cva"],
 
@@ -33,3 +34,5 @@ export default {
   singleQuote: false,
   semi: true,
 };
+
+export default config;

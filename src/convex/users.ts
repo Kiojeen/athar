@@ -24,7 +24,6 @@ export const updateProfile = mutation({
   },
 });
 
-
 async function requireAdmin(ctx: any) {
   const userId = await getAuthUserId(ctx);
   if (!userId) throw new ConvexError("غير مسجل الدخول");
